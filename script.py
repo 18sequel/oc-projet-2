@@ -1,7 +1,30 @@
+import os
 import csv
+import time
 import requests
 
 from bs4 import BeautifulSoup
+
+
+def get_categories():
+    categories = {}
+
+    url = 'http://books.toscrape.com/index.html'
+
+    response = requests.get(url)
+
+    if response.ok:
+        soup = BeautifulSoup(response.text, 'lxml')
+
+        sub_categories = soup.find('ul', {'class': 'nav nav-list'}).li.findAll('li')
+
+        for category in sub_categories:
+            categories[f'{category.a.text.split()[0]}'] = f'http://books.toscrape.com/{category.a["href"]}'
+
+        return categories
+
+    else:
+        print('get_categories: erreur, "response status-code != 200"')
 
 
 def get_books(category_url):
@@ -86,18 +109,24 @@ def get_book_informations(book_url):
         print('get_book_informations: erreur, "response status-code != 200"')
 
 
-url = input('url de la catégorie: ')
+start_time = time.time()
 
-with open('category.csv', 'w', encoding='utf-8') as csv_file:
-    csv_writer = csv.writer(csv_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+for category_name, category_url in zip(get_categories().keys(), get_categories().values()):
+    try:
+        os.mkdir('categories')
+    except FileExistsError:
+        pass
 
-    headers = True
+    with open(f'categories/{category_name}.csv', 'w', encoding='utf-8') as csv_file:
+        csv_writer = csv.writer(csv_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
-    for book_url in get_books(url):
-        informations = get_book_informations(book_url)
+        headers = True
 
-        if headers:
-            csv_writer.writerow(list(informations.keys()))
-            headers = False
+        for book in get_books(category_url):
+            informations = get_book_informations(book)
 
-        csv_writer.writerow(list(informations.values()))
+            if headers:
+                csv_writer.writerow(list(informations.keys()))
+                headers = False
+
+            csv_writer.writerow(list(informations.values()))
