@@ -109,6 +109,24 @@ def get_book_informations(book_url):
         print('get_book_informations: erreur, "response status-code != 200"')
 
 
+def download_image(image_url, upc):
+    url = image_url
+
+    response = requests.get(url)
+
+    if response.ok:
+        try:
+            os.mkdir('images')
+        except FileExistsError:
+            pass
+
+        with open(f'images/{upc}.png', 'wb') as image:
+            image.write(response.content)
+
+    else:
+        print('download_image: erreur, "response status-code != 200"')
+
+
 start_time = time.time()
 
 for category_name, category_url in zip(get_categories().keys(), get_categories().values()):
@@ -129,4 +147,9 @@ for category_name, category_url in zip(get_categories().keys(), get_categories()
                 csv_writer.writerow(list(informations.keys()))
                 headers = False
 
+            download_image(informations['image_url'], informations['universal_ product_code'])
+
             csv_writer.writerow(list(informations.values()))
+
+
+print(f'Terminé en {time.time() - start_time} secondes.')
