@@ -2,6 +2,7 @@ import os
 import csv
 import time
 import requests
+from threading import Thread
 
 from bs4 import BeautifulSoup
 
@@ -127,6 +128,8 @@ def download_image(image_url, upc):
         print('download_image: erreur, "response status-code != 200"')
 
 
+threads = []
+
 start_time = time.time()
 
 for category_name, category_url in zip(get_categories().keys(), get_categories().values()):
@@ -143,14 +146,21 @@ for category_name, category_url in zip(get_categories().keys(), get_categories()
         for book in get_books(category_url):
             informations = get_book_informations(book)
 
+            download = Thread(
+                target=download_image, args=(informations['image_url'], informations['universal_ product_code'])
+            )
+            download.start()
+            threads.append(download)
+
             if headers:
                 csv_writer.writerow(list(informations.keys()))
                 headers = False
 
-            download_image(informations['image_url'], informations['universal_ product_code'])
-
             csv_writer.writerow(list(informations.values()))
 
+
+for thread in threads:
+    thread.join()
 
 print(f'Terminé en {time.time() - start_time} secondes.')
 os.system('pause')
