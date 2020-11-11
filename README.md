@@ -18,18 +18,15 @@ cd activate # appuyer sur entrée
 ```
 Autres:
 ```bash
-source env/bin/activate
+source env/bin/activate # appuyer sur entrée
 ```
 
 Installer les packages requis avec la commande :
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirements.txt # appuyer sur entrée
 ```
 
 ## Comment l'utiliser
 
-Lancer simplement "script.py" via une invite de commande :
-```python
-py script.py
-```
+Lancer simplement le fichier "script.py"
