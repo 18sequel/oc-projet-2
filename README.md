@@ -29,7 +29,4 @@ pip install -r requirements.txt
 
 ## Comment l'utiliser
 
-Lancer simplement "script.py" via une invite de commande :
-```python
-py script.py
-```
+Lancer simplement le fichier "script.py"
