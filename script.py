@@ -153,3 +153,4 @@ for category_name, category_url in zip(get_categories().keys(), get_categories()
 
 
 print(f'Terminé en {time.time() - start_time} secondes.')
+os.system('pause')
