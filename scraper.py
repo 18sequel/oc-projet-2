@@ -147,7 +147,7 @@ for category_name, category_url in zip(get_categories().keys(), get_categories()
             informations = get_book_informations(book)
 
             download = Thread(
-                target=download_image, args=(informations['image_url'], informations['universal_ product_code'])
+                target=download_image, args=(informations['image_url'], informations['universal_product_code'])
             )
             download.start()
             threads.append(download)
