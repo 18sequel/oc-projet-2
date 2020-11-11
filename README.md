@@ -29,4 +29,4 @@ pip install -r requirements.txt # appuyer sur entrée
 
 ## Comment l'utiliser
 
-Lancer simplement le fichier "script.py"
+Lancer simplement le fichier "scraper.py"
