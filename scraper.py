@@ -76,7 +76,7 @@ def get_book_informations(book_url):
         sub_informations = soup.find('table', {'class': 'table table-striped'}).findAll('tr')
 
         upc = sub_informations[0].td.text
-        informations['universal_ product_code'] = upc
+        informations['universal_product_code'] = upc
 
         title = soup.find('div', {'class': 'col-sm-6 product_main'}).h1.text
         informations['title'] = title
