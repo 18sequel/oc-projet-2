@@ -4,10 +4,12 @@ from bs4 import BeautifulSoup
 
 
 def get_books(category_url):
+    """
+    Scrape l'url de chaque livres d'une catégorie via l'url de la celle-ci
+    """
+
     books_url = []
-
     index = 1
-
     base_url = category_url
 
     while True:
@@ -20,11 +22,14 @@ def get_books(category_url):
 
         if response.ok:
             soup = BeautifulSoup(response.text, 'lxml')
-
             sub_books = soup.find('ol', {'class': 'row'}).findAll('li')
 
             for book in sub_books:
-                books_url.append(book.h3.a['href'].replace('../../../', 'http://books.toscrape.com/catalogue/'))
+                books_url.append(
+                    book.h3.a['href'].replace(
+                        '../../../', 'http://books.toscrape.com/catalogue/'
+                    )
+                )
 
             if soup.find('li', {'class': 'next'}):
                 index += 1

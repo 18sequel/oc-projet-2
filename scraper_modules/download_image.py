@@ -6,9 +6,12 @@ import requests
 FOLDER_NAME = 'images'
 
 def download_image(image_url, upc):
-    url = image_url
+    """
+    Télécharge l'image via l'url
+    """
 
-    """response = requests.get(url)
+    url = image_url
+    response = requests.get(url)
 
     if response.ok:
         if not os.path.exists(FOLDER_NAME):
@@ -19,4 +22,3 @@ def download_image(image_url, upc):
 
     else:
         print('download_image: erreur, "response status-code != 200"')
-"""
