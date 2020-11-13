@@ -20,7 +20,7 @@
         cd env/scripts # appuyer sur entrée
         cd activate # appuyer sur entrée
         ```
-    * ###### Autres:
+    * ###### Autres :
     
         ```bash
         source env/bin/activate # appuyer sur entrée
@@ -34,4 +34,4 @@
 
 ## Comment l'utiliser
 
-##### Lancer simplement le fichier "scraper.py"
+##### Lancer simplement le fichier "main.py"
