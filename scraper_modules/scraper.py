@@ -12,7 +12,7 @@ from scraper_modules.get_book_informations import get_book_informations
 
 def scraper():
     """
-    Créé la liste "categories" qui contient :
+    Créer la liste "categories" qui contient :
         - le nom de la catégorie
         - l'url de la catégorie
         - la liste des dictionnaires d'informations de chaque livres

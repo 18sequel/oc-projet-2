@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 
 def get_books(category_url):
     """
-    Scrape l'url de chaque livres d'une catégorie via l'url de la celle-ci
+    Scrape l'url de chaque livres d'une catégorie via l'url de celle-ci
     """
 
     books_url = []

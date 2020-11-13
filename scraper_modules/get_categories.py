@@ -15,7 +15,9 @@ def get_categories():
     if response.ok:
         soup = BeautifulSoup(response.text, "lxml")
 
-        sub_categories = soup.find("ul", {"class": "nav nav-list"}).li.findAll("li")
+        sub_categories = soup.find(
+            "ul", {"class": "nav nav-list"}
+        ).li.findAll("li")
 
         for category in sub_categories:
             categories[
