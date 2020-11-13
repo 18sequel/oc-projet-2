@@ -9,21 +9,20 @@ def get_categories():
     Scrape toutes les catégories du site web http://books.toscrape.com/
     """
 
-    categories = {}
+    categories = []
     url = "http://books.toscrape.com/index.html"
     response = requests.get(url)
 
     if response.ok:
         soup = BeautifulSoup(response.text, "lxml")
-
         sub_categories = soup.find(
             "ul", {"class": "nav nav-list"}
         ).li.findAll("li")
 
         for category in sub_categories:
-            categories[
-                f"{category.a.text.split()[0]}"
-            ] = f'http://books.toscrape.com/{category.a["href"]}'
+            category_name = category.a.text.split()[0]
+            category_url = f'http://books.toscrape.com/{category.a["href"]}'
+            categories.append({category_name: category_url})
 
         return categories
 
