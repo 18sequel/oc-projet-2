@@ -34,4 +34,4 @@
 
 ## Comment l'utiliser
 
-##### Lancer simplement le fichier "scraper.py"
+##### Lancer simplement le fichier "main.py"
