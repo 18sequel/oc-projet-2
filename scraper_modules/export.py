@@ -16,10 +16,15 @@ def export(informations):
 
     for category in informations:
         with open(
-            f'{FOLDER_NAME}/{category["category_name"]}.csv', "w", encoding="utf-8"
+            f'{FOLDER_NAME}/{category["category_name"]}.csv',
+                "w",
+                encoding="utf-8"
         ) as csv_file:
             csv_writer = csv.writer(
-                csv_file, delimiter=",", quotechar='"', quoting=csv.QUOTE_MINIMAL
+                csv_file,
+                delimiter=",",
+                quotechar='"',
+                quoting=csv.QUOTE_MINIMAL
             )
             headers = True
 

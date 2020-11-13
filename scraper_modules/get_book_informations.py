@@ -1,5 +1,6 @@
 import requests
 
+
 from bs4 import BeautifulSoup
 
 
@@ -14,10 +15,13 @@ def get_book_informations(book_url):
     response = requests.get(url)
 
     if response.ok:
-        soup = BeautifulSoup(response.content.decode("utf-8", "ignore"), "lxml")
-        sub_informations = soup.find("table", {"class": "table table-striped"}).findAll(
-            "tr"
+        soup = BeautifulSoup(
+            response.content.decode("utf-8", "ignore"), "lxml"
         )
+        sub_informations = soup.find(
+            "table",
+            {"class": "table table-striped"}
+        ).findAll("tr")
         upc = sub_informations[0].td.text
         informations["universal_product_code"] = upc
         title = soup.find("div", {"class": "col-sm-6 product_main"}).h1.text
@@ -28,21 +32,25 @@ def get_book_informations(book_url):
         informations["price_excluding_tax"] = price_excl_tax[1:]
         number_available = sub_informations[5].td.text
         informations["number_available"] = number_available
-        description = (
-            soup.find("article", {"class": "product_page"}).findAll("p")[3].text
-        )
+        description = soup.find(
+            "article",
+            {"class": "product_page"}
+        ).findAll("p")[3].text
         informations["product_description"] = description
-        category = soup.find("ul", {"class": "breadcrumb"}).findAll("li")[2].a.text
+        category = soup.find(
+            "ul",
+            {"class": "breadcrumb"}
+        ).findAll("li")[2].a.text
         informations["category"] = category
-        review_rating = soup.find("div", {"class": "col-sm-6 product_main"}).findAll(
-            "p"
-        )[2]["class"][1]
+        review_rating = soup.find(
+            "div",
+            {"class": "col-sm-6 product_main"}
+        ).findAll("p")[2]["class"][1]
         informations["review_rating"] = review_rating
-        image_url = (
-            soup.find("div", {"class": "item active"})
-            .img["src"]
-            .replace("../../", "http://books.toscrape.com/")
-        )
+        image_url = soup.find(
+            "div",
+            {"class": "item active"}
+        ).img["src"].replace("../../", "http://books.toscrape.com/")
         informations["image_url"] = image_url
 
         return informations
