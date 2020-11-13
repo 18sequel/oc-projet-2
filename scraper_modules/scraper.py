@@ -24,18 +24,19 @@ def scraper():
 
     for category_name, category_url in tqdm(get_categories().items()):
         category = {}
-        category['category_name'] = category_name
-        category['category_url'] = category_url
-        category['books'] = []
+        category["category_name"] = category_name
+        category["category_url"] = category_url
+        category["books"] = []
 
         for book in get_books(category_url):
             informations = get_book_informations(book)
-            category['books'].append(informations)
+            category["books"].append(informations)
             download = Thread(
-                target=download_image, args=(
-                    informations['image_url'],
-                    informations['universal_product_code']
-                )
+                target=download_image,
+                args=(
+                    informations["image_url"],
+                    informations["universal_product_code"],
+                ),
             )
             download.start()
             threads.append(download)

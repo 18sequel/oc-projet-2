@@ -16,22 +16,22 @@ def get_books(category_url):
         if index == 1:
             url = base_url
         else:
-            url = base_url.replace('index', f'page-{index}')
+            url = base_url.replace("index", f"page-{index}")
 
         response = requests.get(url)
 
         if response.ok:
-            soup = BeautifulSoup(response.text, 'lxml')
-            sub_books = soup.find('ol', {'class': 'row'}).findAll('li')
+            soup = BeautifulSoup(response.text, "lxml")
+            sub_books = soup.find("ol", {"class": "row"}).findAll("li")
 
             for book in sub_books:
                 books_url.append(
-                    book.h3.a['href'].replace(
-                        '../../../', 'http://books.toscrape.com/catalogue/'
+                    book.h3.a["href"].replace(
+                        "../../../", "http://books.toscrape.com/catalogue/"
                     )
                 )
 
-            if soup.find('li', {'class': 'next'}):
+            if soup.find("li", {"class": "next"}):
                 index += 1
             else:
                 break
