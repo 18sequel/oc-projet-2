@@ -22,7 +22,13 @@ def scraper():
     threads = []
     categories = []
 
-    for category in tqdm(get_categories()):
+    for category in tqdm(
+            get_categories(),
+            desc='Progression',
+            total=100,
+            unit='ticks',
+            colour='yellow'
+    ):
         for category_name, category_url in category.items():
             category = {
                 "category_name": category_name,
