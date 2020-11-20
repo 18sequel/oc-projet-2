@@ -25,7 +25,8 @@ def export(informations):
         with open(
             f'{FOLDER_NAME}/{category["category_name"]}.csv',
                 "w",
-                encoding="utf-8"
+                encoding="utf-8",
+                newline=''
         ) as csv_file:
             csv_writer = csv.writer(
                 csv_file,
