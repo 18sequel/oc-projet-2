@@ -1,6 +1,8 @@
 import os
 import csv
 
+from tqdm import tqdm
+
 
 FOLDER_NAME = "categories"
 
@@ -14,7 +16,12 @@ def export(informations):
     if not os.path.exists(FOLDER_NAME):
         os.mkdir(FOLDER_NAME)
 
-    for category in informations:
+    for category in tqdm(
+            informations,
+            desc='Exporting',
+            unit='ticks',
+            colour='green'
+    ):
         with open(
             f'{FOLDER_NAME}/{category["category_name"]}.csv',
                 "w",

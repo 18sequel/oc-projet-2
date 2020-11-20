@@ -24,7 +24,7 @@ def scraper():
 
     for category in tqdm(
             get_categories(),
-            desc='Progression',
+            desc='Scrapping/Downloading',
             unit='ticks',
             colour='yellow'
     ):
