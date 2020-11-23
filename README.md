@@ -40,4 +40,7 @@
 
 ## Comment l'utiliser
 
-##### Lancer simplement le fichier "main.py"
+##### Lancer simplement le fichier "main.py" via une invite de commande
+    ```bash
+    py main.py
+    ```
