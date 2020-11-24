@@ -2,10 +2,10 @@ from threading import Thread
 
 from tqdm import tqdm
 
-from scraper_modules.download_image import download_image
-from scraper_modules.get_book_informations import get_book_informations
-from scraper_modules.get_books import get_books
-from scraper_modules.get_categories import get_categories
+from .download_image import download_image
+from .get_book_informations import get_book_informations
+from .get_books import get_books
+from .get_categories import get_categories
 
 
 def scraper():
