@@ -32,7 +32,7 @@ def scraper():
                 download = Thread(
                     target=download_image,
                     args=(informations["image_url"],
-                          informations["universal_product_code"],),)
+                          informations["universal_product_code"],))
                 download.start()
                 threads.append(download)
             categories.append(category)
