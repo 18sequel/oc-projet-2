@@ -28,7 +28,6 @@
         
 * ##### Cloner le répositoire
     ```bash
-    git init # appuyer sur entrer
     git clone https://github.com/18sequel/oc-projet-2.git # appuyer sur entrer
     ```
 
