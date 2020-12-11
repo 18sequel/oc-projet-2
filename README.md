@@ -5,20 +5,6 @@
 
 ## Installation
 #### Créer un environnement virtuel python :
-  
-* ##### Activer l'environnement virtuel python :
-
-    * ###### Windows :
-    
-        ```bash
-        cd env/scripts # appuyer sur entrer
-        cd activate # appuyer sur entrer
-        ```
-    * ###### Autres :
-    
-        ```bash
-        source env/bin/activate # appuyer sur entrée
-        ```
         
 * ##### Cloner le répositoire
     ```bash
@@ -36,6 +22,20 @@
     ```bash
     py -m venv env # appuyer sur entrer
     ```
+
+* ##### Activer l'environnement virtuel python :
+
+    * ###### Windows :
+    
+        ```bash
+        cd env/scripts # appuyer sur entrer
+        cd activate # appuyer sur entrer
+        ```
+    * ###### Autres :
+    
+        ```bash
+        source env/bin/activate # appuyer sur entrée
+        ```
     
 ## Comment l'utiliser
 
