@@ -4,7 +4,6 @@
 ##### http://books.toscrape.com/
 
 ## Installation
-#### Créer un environnement virtuel python :
         
 * ##### Cloner le répositoire
     ```bash
@@ -16,6 +15,8 @@
     ```bash
     pip install -r requirements.txt # appuyer sur entrer
     ```
+
+#### Créer un environnement virtuel python :
 
 * ##### Ouvrir un invite de commande :
 
