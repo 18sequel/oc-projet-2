@@ -7,7 +7,7 @@
         
 * ##### Cloner le répositoire
     ```bash
-    git clone https://github.com/18sequel/oc-projet-2.git # appuyer sur entrer
+    git clone https://github.com/mmxxinterlude/oc-projet-2.git # appuyer sur entrer
     ```
 
 * ##### Installer les packages requis avec la commande :
