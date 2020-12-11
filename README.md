@@ -5,12 +5,6 @@
 
 ## Installation
 #### Créer un environnement virtuel python :
-
-* ##### Ouvrir un invite de commande :
-
-    ```bash
-    py -m venv env # appuyer sur entrer
-    ```
   
 * ##### Activer l'environnement virtuel python :
 
@@ -37,6 +31,12 @@
     pip install -r requirements.txt # appuyer sur entrer
     ```
 
+* ##### Ouvrir un invite de commande :
+
+    ```bash
+    py -m venv env # appuyer sur entrer
+    ```
+    
 ## Comment l'utiliser
 
 ##### Lancer simplement le fichier "main.py" via une invite de commande
